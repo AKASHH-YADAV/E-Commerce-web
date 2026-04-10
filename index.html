@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyShop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body { font-family: Arial; }
+
+.banner {
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  padding: 50px;
+  color: white;
+  text-align: center;
+/*margin-top:5px;*/
+}
+
+.banner h2{
+  padding-top:10vh;
+}
+
+.product img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+#na{
+  display:flex;
+  position: fixed;
+  z-index:99;
+  width:100vw;
+  height: 10vh;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.dark-mode .navbar {
+  background-color: #000 !important;
+}
+
+.dark-mode input {
+  background-color: #f4efeff9;
+  color: white;
+  border: 1px solid #555;
+}
+
+.dark-mode .banner {
+  background: linear-gradient(to right, #222, #444);
+}
+
+.bottom{
+  margin-top:0;
+  margin-left:0%;
+  padding:20px;
+  display:flex;
+  background-color:#00aaffdd;
+  width:100vw;
+}
+
+</style>
+</head>
+<body >
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark" id="na">
+  <div class="container" >
+    <a class="navbar-brand">MyShop</a>
+
+    <div class="d-flex">
+   
+      <input id="search" onkeyup="searchProduct()" class="form-control me-2" placeholder="Search products">
+      <a href="cart.html" class="btn btn-warning">Cart 🛒</a>
+   <button onclick="toggleDarkMode()" class="btn btn-dark ms-2" style="width:5vw;padding-left:2px;border:2px solid #042f3b;border-radius:50%;background-color:#042f3b;">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Banner -->
+<div class="banner">
+  <h2>Welcome to MyShop</h2>
+</div>
+
+<!-- Products -->
+<div class="container my-5">
+  <div class="row" id="products">
+
+    <!-- Product 1 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://m.media-amazon.com/images/I/61CGHv6kmWL._SX522_.jpg" class="card-img-top">
+        <h5>Headphones</h5>
+        <p>₹999</p>
+        <button onclick="addToCart('Headphones',999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/dda507d6073c4f44abb5d314d617250e_9366/Ultra_4DFWD_Running_Shoes_Grey_ID1686_HM1.jpg" class="card-img-top">
+        <h5>Shoes</h5>
+        <p>₹1499</p>
+        <button onclick="addToCart('Shoes',1499)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://m.media-amazon.com/images/I/61ZjlBOp%2BrL._SX522_.jpg" class="card-img-top">
+        <h5>Watch</h5>
+        <p>₹1999</p>
+        <button onclick="addToCart('Watch',1999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/078546/01/fnd/IND/fmt/png/PUMA-Storm-Water-Resistant-Backpack-27L" class="card-img-top">
+        <h5>Bag</h5>
+        <p>₹899</p>
+        <button onclick="addToCart('Bag',899)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://m.media-amazon.com/images/I/71d7rfSl0wL._UY695_.jpg" class="card-img-top">
+        <h5>Smartphone</h5>
+        <p>₹12999</p>
+        <button onclick="addToCart('Smartphone',12999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="card-img-top">
+        <h5>Laptop</h5>
+        <p>₹49999</p>
+        <button onclick="addToCart('Laptop',49999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="card-img-top">
+        <h5>Camera</h5>
+        <p>₹25999</p>
+        <button onclick="addToCart('Camera',25999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="col-md-3 col-sm-6 mb-4 product-item">
+      <div class="card product text-center p-3">
+        <img src="https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="card-img-top">
+        <h5>Keyboard</h5>
+        <p>₹25999</p>
+        <button onclick="addToCart('Camera',25999)" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <div class="bottom"  >
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta rerum eum, maiores doloribus rem consequatur maxime ipsa nam cum sapiente minus dignissimos ut nostrum officia enim atque culpa aliquam laboriosam.
+</div>
+
+
+<script>
+// Add to cart
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || []; <!--save or not-->
+
+  let item = cart.find(p => p.name === name);/*<!--chk alrdy ext or not*/
+
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({name, price, qty:1});
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart");
+}
+
+// Search
+function searchProduct() {
+  let value = document.getElementById("search").value.toLowerCase();
+  let items = document.querySelectorAll(".product-item");/*return node*/
+
+  items.forEach(item => {
+    let text = item.innerText.toLowerCase();
+    item.style.display = text.includes(value) ? "" : "none";
+  });
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+
+  // Save mode in localStorage
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+// Apply saved theme on page load
+window.onload = function () {
+  let theme = localStorage.getItem("theme");
+
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+};
+
+</script>
+
+</body>
+</html>
